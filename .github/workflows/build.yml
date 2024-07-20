@@ -2,11 +2,12 @@ name: Build React App and Docker Image
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - "*"
+  workflow_dispatch:
 
 env:
-  DOCKER_REPOSITORY: hppanpaliya/react-trashmail
+  DOCKER_REPOSITORY: enkidu6/trashmail
 
 jobs:
   build-and-push:

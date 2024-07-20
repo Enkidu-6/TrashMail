@@ -4,19 +4,19 @@
 mongod --fork --logpath /var/log/mongod.log
 
 # Path to a flag file that indicates the first run is completed
-FIRST_RUN_FLAG="/React-TrashMail/.first-run-complete"
+FIRST_RUN_FLAG="/Trashmail/.first-run-complete"
 
 
 # Check if it's the first run
 if [ ! -f "$FIRST_RUN_FLAG" ]; then
     # Create .env file with runtime environment variables
-    echo "REACT_APP_API_URL=$REACT_APP_API_URL" > /React-TrashMail/react/.env
-    echo "REACT_APP_DOMAINS=$REACT_APP_DOMAINS" >> /React-TrashMail/react/.env
+    echo "REACT_APP_API_URL=$REACT_APP_API_URL" > /Trashmail/react/.env
+    echo "REACT_APP_DOMAINS=$REACT_APP_DOMAINS" >> /Trashmail/react/.env
 
     pm2-runtime stop yarn -- start
 
     # Set environment variables in react
-    cd /React-TrashMail/react
+    cd /Trashmail/react
     
     npx react-inject-env set
     mv ./build/env.js ../mailserver/build/
@@ -26,5 +26,5 @@ if [ ! -f "$FIRST_RUN_FLAG" ]; then
 fi
 
 # Start the application
-cd /React-TrashMail/mailserver
-PM2_HOME=/React-TrashMail/mailserver pm2-runtime start yarn -- start:docker
+cd /Trashmail/mailserver
+PM2_HOME=/Trashmail/mailserver pm2-runtime start yarn -- start:docker

@@ -14,25 +14,25 @@ RUN npm install -g yarn
 RUN yarn global add pm2
 
 # Copy in package.json files and run install to allow docker to cache them
-COPY react/package.json /React-TrashMail/react/
-COPY react/yarn.lock /React-TrashMail/react/
-WORKDIR /React-TrashMail/react
+COPY react/package.json /Trashmail/react/
+COPY react/yarn.lock /Trashmail/react/
+WORKDIR /Trashmail/react
 RUN yarn install
 
-COPY mailserver/package.json /React-TrashMail/mailserver/
-COPY mailserver/yarn.lock /React-TrashMail/mailserver/
-WORKDIR /React-TrashMail/mailserver
+COPY mailserver/package.json /Trashmail/mailserver/
+COPY mailserver/yarn.lock /Trashmail/mailserver/
+WORKDIR /Trashmail/mailserver
 RUN yarn install
 
 # Copy the rest of the application code
-COPY . /React-TrashMail
+COPY . /Trashmail
 
-WORKDIR /React-TrashMail/react
+WORKDIR /Trashmail/react
 RUN yarn build 
 RUN rm -rf ../mailserver/build/* && mkdir -p ../mailserver/build && cp -r build/* ../mailserver/build/
 
 # Define mountable volume
-VOLUME ["/React-TrashMail/mailserver/attachments"]
+VOLUME ["/Trashmail/mailserver/attachments"]
 
 # Copy startup script
 COPY docker_start.sh /docker_start.sh

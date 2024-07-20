@@ -90,7 +90,8 @@ const Main = () => {
                 }}
               >
                 TrashMail is your go-to platform for creating temporary and disposable email addresses. With our cutting-edge technology, you can easily
-                protect your privacy and avoid spam in a hassle-free manner.
+                protect your privacy and avoid spam in a hassle-free manner. We clear the Inbox periodically but the address remains valid. 
+                You or anyone who knows your temporary email address can view your emails any time. Do not use for private correspondence.
               </Typography>
             </Box>
           </motion.div>

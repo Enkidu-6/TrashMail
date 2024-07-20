@@ -112,7 +112,7 @@ For those who prefer a containerized deployment, Docker can be used to easily se
 2. **Run the Docker Container**:
    After building the image, you can start the container using:
    ```shell
-   sudo docker run -d -p 4000:4000 -p 25:25 -v ./attachments:/React-TrashMail/mailserver/attachments -e REACT_APP_API_URL= -e REACT_APP_DOMAINS='["example.com"]' --name trashmail-container hppanpaliya/react-trashmail:latest
+   sudo docker run -d -p 4000:4000 -p 25:25 -v ./attachments:/Trashmail/mailserver/attachments -e REACT_APP_API_URL= -e REACT_APP_DOMAINS='["example.com"]' --name trashmail-container enkidu6/Trashmail:latest
    ```
    This command starts the TrashMail application and exposes it on ports 4000 and 25 for mailserver.
 
@@ -128,7 +128,7 @@ Ensure you have Docker installed and running on your machine before executing th
 |-----------------|-----------------------|
 | `-e REACT_APP_API_URL=` | Sets the API URL. Leave empty or set to the backend URL if hosted externally. Example: `-e REACT_APP_API_URL=http://backendhost:4000` |
 | `-e REACT_APP_DOMAINS='["example.com", "example.org"]'` | Specifies the domains for the email service. Set to desired domains. |
-| `-v ./attachments:/React-TrashMail/mailserver/attachments` | Volume mount for attachments. Maps a local directory to a container directory. |
+| `-v ./attachments:/Trashmail/mailserver/attachments` | Volume mount for attachments. Maps a local directory to a container directory. |
 | `-v /my/local/mongodb:/data/db` | (Optional) Volume mount for MongoDB data. Maps a local directory to the MongoDB data directory in the container. |
 
 These options and environment variables are crucial for configuring the TrashMail application within the Docker environment, especially for handling backend API communication and data persistence.
