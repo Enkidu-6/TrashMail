@@ -98,12 +98,12 @@ jobs:
       - name: Create and push Docker manifest
         run: |
           docker buildx imagetools create \
-            --tag ${{ env.DOCKER_REPOSITORY }}:${{steps.tag.outputs.tag}}:latest \
+            --tag ${{ env.DOCKER_REPOSITORY }}:latest \
             --tag ${{ env.DOCKER_REPOSITORY }}:${{steps.tag.outputs.tag}} \
             ${{ env.DOCKER_REPOSITORY }}:${{steps.tag.outputs.tag}}-amd64 \
             ${{ env.DOCKER_REPOSITORY }}:${{steps.tag.outputs.tag}}-arm64
 
       - name: Inspect image
         run: |
-          docker buildx imagetools inspect ${{ env.DOCKER_REPOSITORY }}:${{steps.tag.outputs.tag}}:latest
+          docker buildx imagetools inspect ${{ env.DOCKER_REPOSITORY }}:latest
           docker buildx imagetools inspect ${{ env.DOCKER_REPOSITORY }}:${{steps.tag.outputs.tag}}
