@@ -105,7 +105,6 @@ jobs:
       - name: Use the latest tag pushed
         run: echo ${{steps.tag.outputs.tag}}
           
-
       - name: Create and push Docker manifest
         run: |
           docker buildx imagetools create \
