@@ -2,6 +2,34 @@
 
 TrashMail is a web application for generating disposable/temporary email addresses and viewing emails sent to those addresses. The project consists of a React frontend and a Node.js and MongoDB backend mail server.
 
+# TLDR
+
+Easiest way to run is to modify the following docker-compose.yml and run ```docker compose up -d ``` from the same dirctory.
+
+```
+services:
+  trashmail:
+    image: enkidu6/trashmail:latest
+    container_name: trashmail
+    hostname: your_domain_name
+
+    volumes:
+      - ./attachments:/Trashmail/mailserver/attachments
+
+    ports:
+      - "25:25"
+      - "4000:4000"
+
+    environment:
+      REACT_APP_DOMAINS: '["domain1.tld", "domain2.tld", "domain3.tld"]'
+
+    restart: unless-stopped
+
+```
+
+You should also run nginx to forward port 443 to 4000 and access the site with SSL.
+
+
 ## Table of Contents
 - [Frontend](#frontend)
 - [Backend](#backend)
